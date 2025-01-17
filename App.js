@@ -104,7 +104,7 @@ export default function App() {
 
   const postStatus = (status) => {
     console.log(`Posting status: ${status}`);
-    fetch('https://0fd0-2001-e68-540e-8e69-6539-1f17-e8a1-bd44.ngrok-free.app/whereee', {
+    fetch('https://protrack.ngrok.io/whereee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
