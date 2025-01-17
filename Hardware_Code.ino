@@ -1,20 +1,24 @@
 #include <WiFi.h>
 #include <ArduinoWebsockets.h>
+#include <HTTPClient.h>
 
-#define SOLENOID_PIN 13
-#define BUZZER_PIN 15
+#define SOLENOID_PIN 5
+#define BUZZER_PIN 19
 
 using namespace websockets;
 
-const char* ssid = "pocopoco2@unifi";
-const char* password = "24681012";
+const char* ssid = "pocopoco2@unifi";  // Change to your own WiFi ssid
+const char* password = "24681012";     // Change to your own WiFi password
+
+const char* serverUrl = "https://protrack.ngrok.io/data"; // Replace with your server URL
 
 WebsocketsServer server;
 
 void setup() {
   Serial.begin(115200);
 
-  pinMode(18, OUTPUT);
+  pinMode(SOLENOID_PIN, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
 
   // Connect to WiFi
   WiFi.begin(ssid, password);
@@ -43,22 +47,21 @@ void loop() {
       Serial.print("Received: ");
       Serial.println(message.data());
 
-      if (message.data() == "In Range") {
-        digitalWrite(BUZZER_PIN, LOW);
+      if (message.data() == "ON") {
+        digitalWrite(SOLENOID_PIN, HIGH);
+        delay(5000);
+        digitalWrite(SOLENOID_PIN, LOW);
       }
       else if (message.data() == "Out of Range") {
-      digitalWrite(BUZZER_PIN, HIGH);
+        digitalWrite(BUZZER_PIN, HIGH);
       }
-      else if (message.data() == "ON") {
-        digitalWrite(SOLENOID_PIN, HIGH);
-      }
-      else if (message.data() == "OFF") {
-        digitalWrite(SOLENOID_PIN, LOW);
+      else if (message.data() == "In Range") {
+        digitalWrite(BUZZER_PIN, LOW);
       }
     }
 
     client.close();
     Serial.println("Client disconnected.");
-    digitalWrite(18, LOW);
+    digitalWrite(SOLENOID_PIN, LOW);
   }
 }
