@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="purple-bar">
+        <div class="button-container">
+          <button class="text-button" onclick="redirectToHome()">Home</button>
+          <button class="text-button" onclick="redirectToPayment()">Payment</button>
+          <button class="text-button" onclick="redirectToAccount()">Account</button>
+        </div>
+    </div>
+    <div class="center-container">
+        <div class="content-wrapper"> 
+            <h1>ACCOUNT. COMING SOON.</h1>
+
+            <!-- Login Form -->
+            <div class="form-container">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-button">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign Up</a></p>
+                </form>
+            </div>
+
+            <!-- Signup Form (Hidden by Default) -->
+            <div id="signup-form" class="form-container" style="display:none;">
+                <h2>Sign Up</h2>
+                <form action="/signup" method="POST">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-button">Sign Up</button>
+                    <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/scripts.js"></script>
+
+    <script>
+        // Function to show the Signup form and hide the Login form
+        function showSignupForm() {
+            document.querySelector('.form-container').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        }
+
+        // Function to show the Login form and hide the Signup form
+        function showLoginForm() {
+            document.querySelector('.form-container').style.display = 'block';
+            document.getElementById('signup-form').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* Remove default margin and padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    .image-container img {
+      display: block;
+      width: 100%; /* Stretch image to fill the width */
+      height: auto; /* Maintain aspect ratio */
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navigation bar -->
+  <div class="purple-bar">
+    <div class="button-container">
+      <button class="text-button" onclick="redirectToHome()">Home</button>
+      <button class="text-button" onclick="redirectToPayment()">Payment</button>
+      <button class="text-button" onclick="redirectToAccount()">Account</button>
+    </div>
+  </div>
+
+  <!-- Image section -->
+  <div class="content">    
+    <div class="image-container">
+      <img src="../images/ProTrack.png" alt="ProTrack">
+    </div>
+  </div>
+  
+  <script src="../js/scripts.js"></script>
+</body>
+</html>

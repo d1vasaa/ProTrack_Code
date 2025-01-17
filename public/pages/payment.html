@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="../css/styles.css">  
+</head>
+<body data-rsssl="1">
+  <div class="purple-bar">
+    <div class="button-container">
+      <button class="text-button" onclick="redirectToHome()">Home</button>
+      <button class="text-button" onclick="redirectToPayment()">Payment</button>
+      <button class="text-button" onclick="redirectToAccount()">Account</button>
+    </div>
+  </div>
+  <div class="center-container">
+    <div class="content-wrapper">
+      <h1>Scan QR Code to Unlock Trolley</h1>
+      <main>
+        <div id="reader"></div> <!-- QR code reader element -->
+        <div id="result"></div> <!-- Result display element -->
+      </main>
+    </div>
+  </div>
+  
+  <!-- Import HTML5 QR code library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" 
+          integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- Load scripts.js before the inline script -->
+  <script src="../js/scripts.js"></script>
+  
+  <!-- Inline script -->
+  <script>
+    const scanner = new Html5QrcodeScanner('reader', {
+      qrbox: {
+        width: 250,
+        height: 250,
+      },
+      fps: 30, // Frames per second
+    });
+
+    // Render the scanner and set up success and error callbacks
+    scanner.render(success, error);
+
+    // Callback function for successful QR code scan
+    function success(result) {
+      QRCodeUpdateData(result);
+      window.location.href = 'paymentsuccessful.html'
+      scanner.clear(); // Clear the scanner once a QR code is successfully scanned
+      document.getElementById('reader').remove(); // Remove the QR code reader element
+    }
+
+    // Callback function for scan errors
+    function error(err) {
+      console.error("QR code scan error: ", err); // Log errors to the console
+    }
+
+    // Function to handle the unlock button click
+    function unlockTrolley() {
+      alert('Trolley Unlocked!'); // Replace with the actual function to unlock the trolley
+      // Add your code to handle the trolley unlocking process
+    }
+  </script>
+</body>
+</html>
