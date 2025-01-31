@@ -17,6 +17,46 @@
       width: 100%; /* Stretch image to fill the width */
       height: auto; /* Maintain aspect ratio */
     }
+
+    /* Key Features Section */
+    .features-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 10%;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .feature-box {
+      flex: 1;
+      padding: 20px;
+      margin: 10px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #4A148C; /* Purple color for consistency */
+      margin-bottom: 10px;
+    }
+
+    /* Copyright Section */
+    .copyright {
+      background-color: #ddd; /* Light gray background */
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #333; /* Darker gray text */
+    }
   </style>
 </head>
 <body>
@@ -35,7 +75,30 @@
       <img src="../images/ProTrack.png" alt="ProTrack">
     </div>
   </div>
-  
+
+  <!-- Key Features Section -->
+  <div class="features-container">
+    <div class="feature-box">
+      <div class="feature-title">Real-Time Tracking</div>
+      <p>Monitor trolley locations with precision.</p>
+    </div>
+    
+    <div class="feature-box">
+      <div class="feature-title">User Incentives</div>
+      <p>Encourage users to return trolley with built-in rewards.</p>
+    </div>
+    
+    <div class="feature-box">
+      <div class="feature-title">Geofencing Technology</div>
+      <p>Set up virtual boundaries and receive alerts when a trolley the designated zones.</p>
+    </div>
+  </div>
+
+  <!-- Copyright Section -->
+  <div class="copyright">
+    &copy; 2024 ProTrack. All rights reserved.
+  </div>
+
   <script src="../js/scripts.js"></script>
 </body>
 </html>
